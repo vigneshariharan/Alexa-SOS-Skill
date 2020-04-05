@@ -9,10 +9,11 @@ This is the source code for the SOS skill that can be used in your Alexa Devices
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What are the things that you need to use to build this skill and how to use them?
 
 ```
-Give examples
+- An AWS Account to provision a DynamoDB database: You can create your AWS account here at https://aws.amazon.com
+- A Twilio/Nexmo account to send SMS.
 ```
 
 ### Installing
