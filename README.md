@@ -21,22 +21,22 @@ What are the things that you need to use to build this skill and how to use them
 Follow these steps to build your SOS Skill
 
 1. Create a Skill in the Alexa Developer console.
-```
-- In the page to create a skill, enter your skill name and its default language. Choose Custom Model and Alexa Hosted(Python) for the skill and click Create Skill.
-- Copy and Paste the schema.json file into the Schema tab.
-- Copy and Paste the skill.py file into the Code section.
-- Set your skill invocation name
-- Save the changes
-```
+ - In the page to create a skill, enter your skill name and its default language. Choose Custom Model and Alexa Hosted(Python) for the skill and click Create Skill.
+ - Copy and Paste the schema.json file into the Schema tab.
+ - Copy and Paste the skill.py file into the Code section.
+ - Set your skill invocation name
+ - Save the changes
+
 You can also refer to the steps given at https://developer.amazon.com/en-US/docs/alexa/custom-skills/steps-to-build-a-custom-skill.html to build your own custom skill.
 
 2. Create a webpage to provision input from the user for their contact details.
-```
-until finished
-```
+ - A form based webpage is created to get input from the user.
+ - These details are sent to a DynamoDB database created by you.
+ - API Gateway and Lambda from AWS is used for this purpose.
+ Refer to https://samratpriyadarshi.com/send-data-from-a-webpage-to-amazon-dynamodb-using-api-gateway-and-lambda/ to complete this step.
 
-End with an example of getting some data out of the system or using it for a little demo
-
+3. Changes in the Skill.py code
+ -
 
 ## Deployment
 
