@@ -20,7 +20,9 @@ from ask_sdk_model import Response
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 REGION = 'us-east-1'
-
+TWILIO_SMS_URL = "https://api.twilio.com/2010-04-01/Accounts/{}/Messages.json"
+TWILIO_ACCOUNT_SID ="#Enter your account SID given by twilio"
+TWILIO_AUTH_TOKEN = "#Enter the auth token given"
 
 sts_client = boto3.client('sts')
 assumed_role_object=sts_client.assume_role(
@@ -28,13 +30,15 @@ assumed_role_object=sts_client.assume_role(
     RoleSessionName="AssumeRoleSession1"
 )
 credentials=assumed_role_object['Credentials']
+#to instantiate a dynamodb object
 dynamodb=boto3.resource(
     'dynamodb',region_name=REGION,
     aws_access_key_id=credentials['AccessKeyId'],
     aws_secret_access_key=credentials['SecretAccessKey'],
     aws_session_token=credentials['SessionToken'],
 )
-table = dynamodb.Table('ContactDetails')
+
+table = dynamodb.Table('Enter_name_of_your_table')
 
 class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for Skill Launch."""
@@ -67,18 +71,29 @@ class HelloWorldIntentHandler(AbstractRequestHandler):
         )
         value = response['Items']
         var = json.loads(json.dumps(value))
+        from_number = var[0]["User_Mobile_Number"]
         to_number = var[0]["Emergency_Mobile_Number"]
         name = var[0]['User_Name']
         contact_name = var[0]["Emergency_Name"]
-        body = "A message from alexa: Hello "+contact_name+". Your friend "+name+" is in danger."
+        body = "A message from Alexa: Hello "+contact_name+". Your friend "+name+" is in danger."
         speak_output = "Your contact has been notified! Help will arrive for you"
-        params = {
-            'api_key': '4b957aad',
-            'api_secret': 's2bnA3J2SGxrJmFs',
-            'to': "#to contact number",
-            'from': 'Nexmo',
-            'text': body
-                }
+        # insert Twilio Account SID into the REST API URL
+        populated_url = TWILIO_SMS_URL.format(TWILIO_ACCOUNT_SID)
+        post_params = {"To": to_number, "From": from_number, "Body": body}
+        # encode the parameters for Python's urllib
+        data = parse.urlencode(post_params).encode()
+        req = request.Request(populated_url)
+        # add authentication header to request based on Account SID + Auth Token
+        authentication = "{}:{}".format(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+        base64string = base64.b64encode(authentication.encode('utf-8'))
+        req.add_header("Authorization", "Basic %s" % base64string.decode('ascii'))
+        request.urlopen(req,data)
+        return(
+                handler_input.response_builder
+                .speak(speak_output)
+                # .ask("add a reprompt if you want to keep the session open for the user to respond")
+                .response
+        )
         #abc = coordinate.Coordinate
         query = parse.urlencode(params)
         url = 'https://rest.nexmo.com/sms/json?' + query
