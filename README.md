@@ -7,7 +7,7 @@ An Alexa skill that is designed to alert your designated contact in the event of
 This is the source code for the SOS skill that can be used in your Alexa Devices. It contains a schema file and the actual file for the skill. Alexa Developer Console has been used for this purpose. Skills can be written either in Node.js or Python3. This skill uses Python3. You can create a developer's console account here at https://developer.amazon.com/alexa
 
 
-### Prerequisites
+## Prerequisites
 
 What are the things that you need to use to build this skill and how to use them?
 
@@ -16,43 +16,27 @@ What are the things that you need to use to build this skill and how to use them
 - A Twilio/Nexmo account to send SMS.
 ```
 
-### Installing
+## Installation and Usage
 
-A step by step series of examples that tell you how to get a development env running
+Follow these steps to build your SOS Skill
 
-Say what the step will be
-
+1. Create a Skill in the Alexa Developer console.
 ```
-Give the example
+- In the page to create a skill, enter your skill name and its default language. Choose Custom Model and Alexa Hosted(Python) for the skill and click Create Skill.
+- Copy and Paste the schema.json file into the Schema tab.
+- Copy and Paste the skill.py file into the Code section.
+- Set your skill invocation name
+- Save the changes
 ```
+You can also refer to the steps given at https://developer.amazon.com/en-US/docs/alexa/custom-skills/steps-to-build-a-custom-skill.html to build your own custom skill.
 
-And repeat
-
+2. Create a webpage to provision input from the user for their contact details.
 ```
 until finished
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
