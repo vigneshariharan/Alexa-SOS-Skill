@@ -31,45 +31,36 @@ You can also refer to the steps given at https://developer.amazon.com/en-US/docs
 
 2. Create a webpage to provision input from the user for their contact details.
  - A form based webpage is created to get input from the user.
+ - The website is hosted using Amazon S3's Static website hosting feature. Refer to https://youtu.be/EMXCIWW0x2o.
  - These details are sent to a DynamoDB database created by you.
  - API Gateway and Lambda from AWS is used for this purpose.
  Refer to https://samratpriyadarshi.com/send-data-from-a-webpage-to-amazon-dynamodb-using-api-gateway-and-lambda/ to complete this step.
 
-3. Changes in the Skill.py code
- -
+3. Creating a Twilio account 
+ Refer to https://support.vision6.com.au/hc/en-us/articles/230673727-Text-Messaging-Account-Setup-with-Twilio to get your account SID and Auth Token.
+ 
+4. Changes in the Skill.py code
+ In the skill.py file, enter your
+ - Twilio Account SID
+ - Twilio Auth Token
+ - IAM number for your AWS Account
+ - The name of your DynamoDB table
+  in their respective places. Also ensure that your table is populated so that retrival can be done.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+You can deploy this skill in the Developer console by Building the skill and testing it. If successful, you should receive a text message from your Twilio number with the appropriate message.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Twilio](https://twilio.com/console/) - The API for sending SMS
+* [ASK Developer Console](https://developer.amazon.com/alexa) - for hosting, building and testing our skill
+* [S3](https://console.aws.amazon.com/s3/) - Used to host our website
+* [DynamoDB](https://console.aws.amazon.com/dynamodb/) - database to store contact details
 
-## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+## Author
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+**Vignesh Hariharan K**
 
 
