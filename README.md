@@ -34,6 +34,7 @@ You can also refer to the steps given at https://developer.amazon.com/en-US/docs
  - The website is hosted using Amazon S3's Static website hosting feature. Refer to https://youtu.be/EMXCIWW0x2o.
  - These details are sent to a DynamoDB database created by you.
  - API Gateway and Lambda from AWS is used for this purpose.
+ - The dbapigateway.js file should be used in Lambda to serve this purpose.
  Refer to https://samratpriyadarshi.com/send-data-from-a-webpage-to-amazon-dynamodb-using-api-gateway-and-lambda/ to complete this step.
 
 3. Creating a Twilio account 
