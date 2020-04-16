@@ -1,7 +1,8 @@
-"""
-This is the code that is used in Lambda to receive the request parameters from API Gateway.
-The request from API gateway is in JSON format and the appropriate variables are set with the respective parameters.
-"""
+
+/*
+//This is the code that is used in Lambda to receive the request parameters from API Gateway.
+//The request from API gateway is in JSON format and the appropriate variables are set with the respective parameters.
+*/
 
 console.log('Loading event');
 var AWS = require('aws-sdk');
